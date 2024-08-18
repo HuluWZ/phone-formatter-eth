@@ -1,6 +1,6 @@
 {
   "name": "phone-formater-eth",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Format Ethiopian phone numbers and check ISP under the number.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,10 +25,13 @@
   },
   "license": "MIT",
   "author": "Hulunlante Worku",
-  "homepage": "https://github.com/HuluWZ/phone-formater-eth#README.md",
+  "homepage": "https://github.com/HuluWZ/phone-formater-eth#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HuluWZ/phone-formater-eth.git"
+  },
+    "bugs": {
+    "url": "https://github.com/HuluWZ/phone-formater-eth/issues"
   },
   "keywords": [
     "phone",
