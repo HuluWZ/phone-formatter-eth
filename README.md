@@ -17,9 +17,9 @@ npm install  --save phone-formater-eth
  const { formatPhone,checkOperator } = require('phone-formater-eth');
  ```
 
-1. formatPhone - Formats an Ethiopian phone number to the ISP standard code.
-     #### Parameters - phone (string): The phone number to format.
-     #### Returns  - (string): The formatted phone number in ISP standard code.
+1. <b>formatPhone</b> - Formats an Ethiopian phone number to the ISP standard code.
+     ##### Parameters - phone (string): The phone number to format.
+     ##### Returns  - (string): The formatted phone number in ISP standard code.
      ### Examples
 
 ```
@@ -32,9 +32,9 @@ console.log(formatPhone('25191234567'));   // Outputs: +25191234567
 console.log(formatPhone('0801234567'));    // Outputs: Invalid Phone
 ```
 
-2. checkOperator - Checks the phone operator based on the formatted Ethiopian phone number.
-    #### Parameters - phone (string): The phone number to check.
-    #### Returns  - (string): The operator name or "Unknown" if the operator can't be determined.
+2. <b>checkOperator</b> - Checks the phone operator based on the formatted Ethiopian phone number.
+    ##### Parameters - phone (string): The phone number to check.
+    ##### Returns  - (string): The operator name or "Unknown" if the operator can't be determined.
     ### Examples
 
 ```
@@ -54,6 +54,7 @@ PLease submit your contributions as PRs and also leave a good description for th
 
 ### Licenses
 MIT License
+
 
 Copyright (c) 2024 Hulunlante Worku
 
