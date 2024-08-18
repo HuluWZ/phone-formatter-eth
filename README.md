@@ -15,6 +15,11 @@ npm install  --save phone-formater-eth
 ### Usage
  ```
  const { formatPhone,checkOperator } = require('phone-formater-eth');
+   
+   Or
+
+ import { formatPhone,checkOperator } from 'phone-formater-eth';
+
  ```
 
 1. <b>formatPhone</b> - Formats an Ethiopian phone number to the ISP standard code.
@@ -45,6 +50,14 @@ console.log(checkOperator('251912345678'));   // Outputs: Ethio Telecom
 console.log(checkOperator('0812345678'));     // Outputs: Unknown
 ```
 
+### TODO  ☑️
+
+☑️ 1. Validate - Returns <i>boolean</i> if it's Valid phone number or not
+☑️ 2. Parse - Cleans up or  normalizes phone.
+☑️ 3. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
+☑️ 4. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
+☑️ 5. isMobile - check if it's mobile sim
+   
 
 ### Contributions
 PLease submit your contributions as PRs and also leave a good description for the PR
