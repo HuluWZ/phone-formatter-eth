@@ -10,7 +10,9 @@ npm install  --save phone-formatter-eth
 
 ### Via CDN
 
-```<script src="https://cdn.jsdelivr.net/npm/phone-formater-eth@1.1.4/dist/index.min.js"></script>```
+```
+<script src="https://cdn.jsdelivr.net/npm/phone-formater-eth@1.1.4/dist/index.min.js"></script>
+```
  
 ### Usage
  ```
