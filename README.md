@@ -5,20 +5,20 @@ A simple npm package to format Ethiopian phone numbers to the ISP standard code.
 ### Installation via npm
 
 ```
-npm install  --save phone-formater-eth
+npm install  --save phone-formatter-eth
 ```
 
 ### Via CDN
 
-* Coming Soon
+```<script src="https://cdn.jsdelivr.net/npm/phone-formater-eth@1.1.4/dist/index.min.js"></script>```
  
 ### Usage
  ```
- const { formatPhone, checkOperator, isValid } = require('phone-formater-eth');
+ const { formatPhone, checkOperator, isValid } = require('phone-formatter-eth');
    
    Or
 
- import { formatPhone, checkOperator, isValid } from 'phone-formater-eth';
+ import { formatPhone, checkOperator, isValid } from 'phone-formatter-eth';
 
  ```
 
