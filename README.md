@@ -43,7 +43,7 @@ console.log(formatPhone('0801234567'));    // Outputs: Invalid Phone
     ### Examples
 
 ```
-console.log(checkOperator('712345678'));      // Outputs:  Safaricom
+console.log(checkOperator('712345678'));      // Outputs: Safaricom
 console.log(checkOperator('+251912345678'));  // Outputs: Ethio Telecom
 console.log(checkOperator('0712345678'));     // Outputs: Safaricom
 console.log(checkOperator('251912345678'));   // Outputs: Ethio Telecom
@@ -52,11 +52,13 @@ console.log(checkOperator('0812345678'));     // Outputs: Unknown
 
 ### TODO  ☑️
 
-☑️ 1. Validate - Returns <i>boolean</i> if it's Valid phone number or not
-☑️ 2. Parse - Cleans up or  normalizes phone.
-☑️ 3. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
-☑️ 4. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
-☑️ 5. isMobile - check if it's mobile sim
+1. Validate - Returns <i>boolean</i> if it's Valid phone number or not
+2. Parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
+3. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
+4. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
+5. isMobile - check if it's mobile sim. eg 09/07/+2519/7
+6. isLandline - check if it's landline sim. eg.  +2511
+
    
 
 ### Contributions
