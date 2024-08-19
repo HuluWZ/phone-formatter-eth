@@ -14,11 +14,11 @@ npm install  --save phone-formater-eth
  
 ### Usage
  ```
- const { formatPhone,checkOperator } = require('phone-formater-eth');
+ const { formatPhone, checkOperator, isValid } = require('phone-formater-eth');
    
    Or
 
- import { formatPhone,checkOperator } from 'phone-formater-eth';
+ import { formatPhone, checkOperator, isValid } from 'phone-formater-eth';
 
  ```
 
@@ -50,14 +50,26 @@ console.log(checkOperator('251912345678'));   // Outputs: Ethio Telecom
 console.log(checkOperator('0812345678'));     // Outputs: Unknown
 ```
 
+3. <b>isValid</b> - Checks if phone number is valid or not
+    ##### Parameters - phone (string): The phone number to check.
+    ##### Returns  - (boolean): <i>true</i> if the phone is valid else <i>false</i>
+    ### Examples
+
+```
+console.log(isValid('712345678'));      // Outputs: true
+console.log(isValid('+251912345678'));  // Outputs: true
+console.log(isValid('07812345678'));    // Outputs: false
+console.log(isValid('251912345678'));   // Outputs: true
+console.log(isValid('0812345678'));     // Outputs: false
+```
+
 ### TODO  ☑️
 
-1. Validate - Returns <i>boolean</i> if it's Valid phone number or not
-2. Parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
-3. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
-4. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
-5. isMobile - check if it's mobile sim. eg 09/07/+2519/7
-6. isLandline - check if it's landline sim. eg.  +2511
+1. Parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
+2. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
+3. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
+4. isMobile - check if it's mobile sim. eg 09/07/+2519/7
+5. isLandline - check if it's landline sim. eg.  +2511
 
    
 

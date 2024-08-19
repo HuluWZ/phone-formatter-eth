@@ -9,7 +9,7 @@ export function formatPhone(phone: string) {
   } else if (phone_length === 9 && ["9", "7"].includes(phone.charAt(0))) {
     return `+251${phone}`;
   } else {
-    return "INVALID PHONE NUMBER";
+    return "INVALID_PHONE_NUMBER";
   }
 }
 
@@ -22,4 +22,9 @@ export function checkOperator(phone: string) {
   } else {
     return "UNKNOWN";
   }
+}
+
+export function isValid(phone: string) {
+  const formattedPhone = formatPhone(phone);
+  return formattedPhone === "INVALID_PHONE_NUMBER" ? false : true;
 }

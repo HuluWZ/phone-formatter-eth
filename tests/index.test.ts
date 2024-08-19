@@ -1,4 +1,4 @@
-import { formatPhone, checkOperator } from "../src/index";
+import { formatPhone, checkOperator, isValid } from "../src/index";
 
 describe("formatPhone", () => {
   test("should format phone numbers correctly", () => {
@@ -10,9 +10,9 @@ describe("formatPhone", () => {
     expect(formatPhone("0712345678")).toBe("+251712345678"); // Incorrect format, treated as unknown
     expect(formatPhone("912345678")).toBe("+251912345678"); // 9-digit  ethio-tel number, missing '+251'
     expect(formatPhone("712345678")).toBe("+251712345678"); // 9-digit  safari number, missing '+251'
-    expect(formatPhone("1234567890")).toBe("INVALID PHONE NUMBER"); // Invalid Phone number
-    expect(formatPhone("812345678")).toBe("INVALID PHONE NUMBER"); // Invalid Phone number
-    expect(formatPhone("")).toBe("INVALID PHONE NUMBER"); // Empty input
+    expect(formatPhone("1234567890")).toBe("INVALID_PHONE_NUMBER"); // INVALID_PHONE_NUMBER
+    expect(formatPhone("812345678")).toBe("INVALID_PHONE_NUMBER"); // INVALID_PHONE_NUMBER
+    expect(formatPhone("")).toBe("INVALID_PHONE_NUMBER"); // Empty input
   });
 });
 
@@ -29,5 +29,21 @@ describe("checkOperator", () => {
     expect(checkOperator("1234567890")).toBe("UNKNOWN"); // Invalid Phone Number input
     expect(checkOperator("812345678")).toBe("UNKNOWN"); // Invalid Phone Number input
     expect(checkOperator("")).toBe("UNKNOWN"); // Empty input
+  });
+});
+
+describe("isValid", () => {
+  test("should identify if phone number is valid or not correctly", () => {
+    // Test with different formatted numbers and expected operators
+    expect(isValid("0912345678")).toBe(true); // Standard 10-digit format
+    expect(isValid("+251912345678")).toBe(true); // Already formatted number
+    expect(isValid("+251712345678")).toBe(true); // Already formatted number
+    expect(isValid("251912345678")).toBe(true); // Number starting with '07'
+    expect(isValid("0912345678")).toBe(true); // Missing '+2519'
+    expect(isValid("0712345678")).toBe(true); // Missing prefix `+2517`
+    expect(isValid("712345678")).toBe(true); // 9-digit number
+    expect(isValid("1234567890")).toBe(false); // Invalid Phone Number input
+    expect(isValid("812345678")).toBe(false); // Invalid Phone Number input
+    expect(isValid("")).toBe(false); // Empty input
   });
 });
