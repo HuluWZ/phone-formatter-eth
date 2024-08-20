@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatPhone = formatPhone;
 exports.checkOperator = checkOperator;
+exports.isValid = isValid;
 function formatPhone(phone) {
     const phone_length = phone === null || phone === void 0 ? void 0 : phone.toString().length;
     if (phone_length === 13 && phone.startsWith("+251")) {
@@ -17,7 +18,7 @@ function formatPhone(phone) {
         return `+251${phone}`;
     }
     else {
-        return "INVALID PHONE NUMBER";
+        return "INVALID_PHONE_NUMBER";
     }
 }
 function checkOperator(phone) {
@@ -31,4 +32,8 @@ function checkOperator(phone) {
     else {
         return "UNKNOWN";
     }
+}
+function isValid(phone) {
+    const formattedPhone = formatPhone(phone);
+    return formattedPhone === "INVALID_PHONE_NUMBER" ? false : true;
 }
