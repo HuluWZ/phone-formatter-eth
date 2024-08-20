@@ -1,6 +1,9 @@
 export function formatPhone(phone: string) {
   const phone_length = phone?.toString().length;
-  if (phone_length === 13 && phone.startsWith("+251")) {
+  if (phone_length < 9 || phone_length > 13) {
+    return 'INVALID_PHONE_NUMBER'
+  }
+  else if (phone_length === 13 && phone.startsWith("+251")) {
     return phone;
   } else if (phone_length === 12 && phone.startsWith("251")) {
     return `+${phone}`;
