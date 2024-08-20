@@ -5,7 +5,7 @@ A simple npm package to format Ethiopian phone numbers to the ISP standard code.
 ### Installation via npm
 
 ```
-npm install  --save phone-formatter-eth
+npm install  --save phone-formater-eth
 ```
 
 ### Via CDN
@@ -16,11 +16,11 @@ npm install  --save phone-formatter-eth
  
 ### Usage
  ```
- const { formatPhone, checkOperator, isValid } = require('phone-formatter-eth');
+ const { formatPhone, checkOperator, isValid } = require('phone-formater-eth');
    
    Or
 
- import { formatPhone, checkOperator, isValid } from 'phone-formatter-eth';
+ import { formatPhone, checkOperator, isValid } from 'phone-formater-eth';
 
  ```
 
@@ -67,7 +67,7 @@ console.log(isValid('0812345678'));     // Outputs: false
 
 ### TODO  ☑️
 
-1. Parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
+1. parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
 2. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
 3. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
 4. isMobile - check if it's mobile sim. eg 09/07/+2519/7

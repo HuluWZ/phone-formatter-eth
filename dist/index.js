@@ -4,18 +4,21 @@ exports.formatPhone = formatPhone;
 exports.checkOperator = checkOperator;
 exports.isValid = isValid;
 function formatPhone(phone) {
-    const phone_length = phone === null || phone === void 0 ? void 0 : phone.toString().length;
-    if (phone_length === 13 && phone.startsWith("+251")) {
-        return phone;
+    const formatted_phone = phone.replace(/[^+\d]/g, "");
+    const phone_length = formatted_phone === null || formatted_phone === void 0 ? void 0 : formatted_phone.toString().length;
+    if (phone_length === 13 && formatted_phone.startsWith("+251")) {
+        return formatted_phone;
     }
-    else if (phone_length === 12 && phone.startsWith("251")) {
-        return `+${phone}`;
+    else if (phone_length === 12 && formatted_phone.startsWith("251")) {
+        return `+${formatted_phone}`;
     }
-    else if (phone_length === 10 && ["09", "07"].includes(phone.slice(0, 2))) {
-        return `+251${phone.slice(1)}`;
+    else if (phone_length === 10 &&
+        ["09", "07"].includes(formatted_phone.slice(0, 2))) {
+        return `+251${formatted_phone.slice(1)}`;
     }
-    else if (phone_length === 9 && ["9", "7"].includes(phone.charAt(0))) {
-        return `+251${phone}`;
+    else if (phone_length === 9 &&
+        ["9", "7"].includes(formatted_phone.charAt(0))) {
+        return `+251${formatted_phone}`;
     }
     else {
         return "INVALID_PHONE_NUMBER";
