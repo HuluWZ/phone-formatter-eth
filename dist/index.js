@@ -6,7 +6,10 @@ exports.isValid = isValid;
 function formatPhone(phone) {
     const formatted_phone = phone.replace(/[^+\d]/g, "");
     const phone_length = formatted_phone === null || formatted_phone === void 0 ? void 0 : formatted_phone.toString().length;
-    if (phone_length === 13 && formatted_phone.startsWith("+251")) {
+    if (phone_length < 9 || phone_length > 13) {
+        return 'INVALID_PHONE_NUMBER';
+    }
+    else if (phone_length === 13 && formatted_phone.startsWith("+251")) {
         return formatted_phone;
     }
     else if (phone_length === 12 && formatted_phone.startsWith("251")) {

@@ -25,18 +25,18 @@ npm install  --save phone-formater-eth
  ```
 
 1. <b>formatPhone</b> - Formats an Ethiopian phone number to the ISP standard code.
-     ##### Parameters - phone (string): The phone number to format.
+     ##### Parameters - phone (string), type (string) ("local" | "international" (default)): The phone number to format.
      ##### Returns  - (string): The formatted phone number in ISP standard code.
      ### Examples
 
 ```
-console.log(formatPhone('0912345678'));    // Outputs: +251912345678
-console.log(formatPhone('+251712345678')); // Outputs: +251712345678
-console.log(formatPhone('251912345678'));  // Outputs: +251912345678
-console.log(formatPhone('09123456789'));   // Outputs: +2519123456789
-console.log(formatPhone('071234567'));     // Outputs: +25171234567
-console.log(formatPhone('25191234567'));   // Outputs: +25191234567
-console.log(formatPhone('0801234567'));    // Outputs: Invalid Phone
+console.log(formatPhone('0912345678'));            // Outputs: +251912345678 - Int'l format
+console.log(formatPhone('+251712345678',"local")); // Outputs: 0712345678    - Local
+console.log(formatPhone('251912345678'."local"));  // Outputs: 0912345678    - Local
+console.log(formatPhone('09123456789'));           // Outputs: +2519123456789
+console.log(formatPhone('0712345678',"local"));    // Outputs: 0712345678    - Local
+console.log(formatPhone('25191234567'));           // Outputs: +25191234567
+console.log(formatPhone('0801234567'));            // Outputs: Invalid Phone
 ```
 
 2. <b>checkOperator</b> - Checks the phone operator based on the formatted Ethiopian phone number.
@@ -68,10 +68,8 @@ console.log(isValid('0812345678'));     // Outputs: false
 ### TODO  ☑️
 
 1. parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
-2. toLocal - Converts phone number to local | Ethiopian format. 09 or 07 format
-3. toInternational - Converts phone number to Int'l | Ethiopian format. +2519/7
-4. isMobile - check if it's mobile sim. eg 09/07/+2519/7
-5. isLandline - check if it's landline sim. eg.  +2511
+2. isMobile - check if it's mobile sim. eg 09/07/+2519/7
+3. isLandline - check if it's landline sim. eg.  +2511
 
    
 
