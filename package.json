@@ -1,34 +1,40 @@
 {
   "name": "phone-formater-eth",
-  "version": "1.1.0",
+  "version": "1.1.7",
   "description": "Format Ethiopian phone numbers and check ISP under the number.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "start": "node dist/index.js",
+    "start": "nodemon dist/index.js",
+    "dev": "nodemon --watch src --ext ts src/index.ts",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^29.0.0",
     "@types/node": "^18.0.0",
     "jest": "^29.0.0",
+    "nodemon": "^3.1.4",
     "ts-jest": "^29.0.0",
     "typescript": "^5.0.0"
   },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "testMatch": ["**/?(*.)+(spec|test).ts"]
+    "testMatch": [
+      "**/?(*.)+(spec|test).ts"
+    ]
   },
   "license": "MIT",
   "author": "Hulunlante Worku",
-  "homepage": "https://github.com/HuluWZ/phone-formater-eth",
+  "homepage": "https://github.com/HuluWZ/phone-formater-eth#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HuluWZ/phone-formater-eth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HuluWZ/phone-formater-eth/issues"
   },
   "keywords": [
     "phone",
