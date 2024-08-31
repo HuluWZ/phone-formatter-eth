@@ -11,16 +11,16 @@ npm install  --save phone-formater-eth
 ### Via CDN
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/phone-formater-eth@1.1.4/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/phone-formater-eth@1.1.7/dist/index.min.js"></script>
 ```
  
 ### Usage
  ```
- const { formatPhone, checkOperator, isValid } = require('phone-formater-eth');
+ const { formatPhone, checkOperator, isValid, parse} = require('phone-formater-eth');
    
    Or
 
- import { formatPhone, checkOperator, isValid } from 'phone-formater-eth';
+ import { formatPhone, checkOperator, isValid, parse } from 'phone-formater-eth';
 
  ```
 
@@ -65,6 +65,19 @@ console.log(isValid('251912345678'));   // Outputs: true
 console.log(isValid('0812345678'));     // Outputs: false
 ```
 
+
+4. <b>parse</b> - Parse phone number to remove special characters like '-' and '(' ')' 
+    ##### Parameters - phone (string): The phone number to cleaned.
+    ##### Returns  - (string): The cleaned phone number if the phone is valid else "INVALID_PHONE_NUMBER"
+    ### Examples
+
+```
+console.log(parse("(251) 911-123-456")); //25191112456
+console.log(parse("(251) 911-123-456")); //25191112456
+console.log(parse("251-911-123-456"));   //25191112456
+console.log(parse("2519-11-123-456"));   //25191112456
+```
+
 ### TODO  ☑️
 
 1. parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
@@ -79,26 +92,6 @@ PLease submit your contributions as PRs and also leave a good description for th
 
 
 
-### Licenses
-MIT License
+### License
 
-
-Copyright (c) 2024 Hulunlante Worku
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.

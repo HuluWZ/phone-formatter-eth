@@ -1,4 +1,4 @@
-import { formatPhone, checkOperator, isValid } from "../src/index";
+import { formatPhone, checkOperator, isValid, parse } from "../src/index";
 
 describe("formatPhone", () => {
   test("should format phone numbers correctly", () => {
@@ -45,5 +45,16 @@ describe("isValid", () => {
     expect(isValid("1234567890")).toBe(false); // Invalid Phone Number input
     expect(isValid("812345678")).toBe(false); // Invalid Phone Number input
     expect(isValid("")).toBe(false); // Empty input
+  });
+});
+
+describe("parse", () => {
+  test("should parse phone numbers correctly", () => {
+    expect(parse("(251) 911-123-456")).toBe("251911123456"); // Standard 10-digit format
+    expect(parse("(251) 9-11-123-456")).toBe("251911123456"); // Standard 10-digit format
+    expect(parse("(251) 9111-23-456")).toBe("251911123456"); // Standard 10-digit format
+    expect(parse("(251) 911-123-456")).toBe("251911123456"); // Standard 10-digit format
+    expect(parse("(2519) 11-123-456")).toBe("251911123456"); // Standard 10-digit format
+    expect(parse("")).toBe("INVALID_PHONE_NUMBER"); // Empty input
   });
 });

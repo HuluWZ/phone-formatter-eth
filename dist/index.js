@@ -4,6 +4,13 @@ exports.formatPhone = formatPhone;
 exports.formatLocal = formatLocal;
 exports.checkOperator = checkOperator;
 exports.isValid = isValid;
+exports.parse = parse;
+/**
+ *
+ * @param phone - phone number to be formatted
+ * @param type -  local or international  by default it is international
+ * @returns formatted phone number it it's valid otherwise it returns "INVALID_PHONE_NUMBER"
+ */
 function formatPhone(phone, type = "international") {
     const formatted_phone = phone.replace(/[^+\d]/g, "");
     const phone_length = formatted_phone === null || formatted_phone === void 0 ? void 0 : formatted_phone.toString().length;
@@ -34,9 +41,19 @@ function formatPhone(phone, type = "international") {
         return "INVALID_PHONE_NUMBER";
     }
 }
+/**
+ *
+ * @param phone - phone number to be formatted
+ * @returns phone number formatted to local format like 09 or 07
+ */
 function formatLocal(phone) {
     return phone === null || phone === void 0 ? void 0 : phone.replace("+251", "0");
 }
+/**
+ *
+ * @param phone - phone number to check the operator
+ * @returns 'Safaricom' or 'Ethio Telecom' if it's valid otherwise it returns "UNKNOWN"
+ */
 function checkOperator(phone) {
     const formattedPhone = formatPhone(phone);
     if (formattedPhone.startsWith("+2519")) {
@@ -49,7 +66,24 @@ function checkOperator(phone) {
         return "UNKNOWN";
     }
 }
+/**
+ *
+ * @param phone - phone number to check if it's valid
+ * @returns true if it's valid otherwise it returns false
+ */
 function isValid(phone) {
     const formattedPhone = formatPhone(phone);
     return formattedPhone === "INVALID_PHONE_NUMBER" ? false : true;
+}
+/**
+ * Parses the phone number to remove '-', '(', and ')'.
+ * @param phone - The phone number to be cleaned.
+ * @returns The cleaned phone number if it's valid otherwise "INVALID_PHONE_NUMBER".
+ */
+function parse(phone) {
+    const validPhoneRegex = /^[0-9-()\s]+$/;
+    if (!validPhoneRegex.test(phone)) {
+        return "INVALID_PHONE_NUMBER";
+    }
+    return phone.replace(/[-() ]/g, "");
 }

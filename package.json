@@ -8,6 +8,7 @@
     "build": "tsc",
     "test": "jest",
     "start": "nodemon dist/index.js",
+    "dev": "nodemon --watch src --ext ts src/index.ts",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
