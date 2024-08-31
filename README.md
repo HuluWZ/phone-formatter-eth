@@ -80,9 +80,8 @@ console.log(parse("2519-11-123-456"));   //25191112456
 
 ### TODO  ☑️
 
-1. parse - Cleans up or  normalizes phone.e.g  special characters  like - and ()
-2. isMobile - check if it's mobile sim. eg 09/07/+2519/7
-3. isLandline - check if it's landline sim. eg.  +2511
+1. isMobile - check if it's mobile sim. eg 09/07/+2519/7
+2. isLandline - check if it's landline sim. eg.  +2511
 
    
 
