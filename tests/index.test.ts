@@ -478,13 +478,4 @@ describe("Integration tests", () => {
   });
 });
 
-describe("parse", () => {
-  test("should parse phone numbers correctly", () => {
-    expect(parse("(251) 911-123-456")).toBe("251911123456"); // Standard 10-digit format
-    expect(parse("(251) 9-11-123-456")).toBe("251911123456"); // Standard 10-digit format
-    expect(parse("(251) 9111-23-456")).toBe("251911123456"); // Standard 10-digit format
-    expect(parse("(251) 911-123-456")).toBe("251911123456"); // Standard 10-digit format
-    expect(parse("(2519) 11-123-456")).toBe("251911123456"); // Standard 10-digit format
-    expect(parse("")).toBe("INVALID_PHONE_NUMBER"); // Empty input
-  });
-});
+

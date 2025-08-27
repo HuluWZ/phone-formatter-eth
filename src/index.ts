@@ -385,15 +385,4 @@ export function validatePhoneNumber(phone: string): {
   }
 }
 
-/**
- * Parses the phone number to remove '-', '(', and ')'.
- * @param phone - The phone number to be cleaned.
- * @returns The cleaned phone number if it's valid otherwise "INVALID_PHONE_NUMBER".
- */
-export function parse(phone: string): string {
-  const validPhoneRegex = /^[0-9-()\s]+$/;
-  if (!validPhoneRegex.test(phone)) {
-    return "INVALID_PHONE_NUMBER";
-  }
-  return phone.replace(/[-() ]/g, "");
-}
+
