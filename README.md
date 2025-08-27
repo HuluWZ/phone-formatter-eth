@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![Tests](https://img.shields.io/badge/Tests-52%20passing-brightgreen.svg)](https://github.com/HuluWZ/phone-formater-eth)
+[![CircleCI](https://circleci.com/gh/HuluWZ/phone-formater-eth.svg?style=svg)](https://circleci.com/gh/HuluWZ/phone-formater-eth)
 
 A comprehensive TypeScript library for formatting, validating, and analyzing Ethiopian phone numbers. Supports both mobile and landline numbers with advanced error handling and validation.
 

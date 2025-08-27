@@ -1,0 +1,131 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+
+executors:
+  node-executor:
+    docker:
+      - image: cimg/node:18.19
+    resource_class: small
+
+  node-medium:
+    docker:
+      - image: cimg/node:18.19
+    resource_class: medium
+
+commands:
+  install-deps:
+    description: Install dependencies with optimized caching
+    steps:
+      - restore_cache:
+          keys:
+            - v2-deps-{{ checksum "package-lock.json" }}
+            - v2-deps-
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: v2-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+  setup-workspace:
+    description: Setup workspace with optimized checkout
+    steps:
+      - checkout
+      - install-deps
+
+jobs:
+  test:
+    executor: node-executor
+    steps:
+      - setup-workspace
+      - run:
+          name: Run tests
+          command: npm test
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: test-results
+
+  build:
+    executor: node-executor
+    steps:
+      - setup-workspace
+      - run:
+          name: Build project
+          command: npm run build
+      - store_artifacts:
+          path: dist
+          destination: build
+
+  npm-publish:
+    executor: node-medium
+    steps:
+      - setup-workspace
+      - run:
+          name: Build project
+          command: npm run build
+      - run:
+          name: Run tests
+          command: npm test
+      - run:
+          name: Type check
+          command: npx tsc --noEmit
+      - run:
+          name: Publish to npm
+          command: npm publish
+      - run:
+          name: Notify success
+          command: |
+            echo "✅ Successfully published phone-formater-eth@$(node -p "require('./package.json').version") to npm!"
+
+workflows:
+  version: 2
+  
+  # Development workflow - runs on dev branch and feature branches
+  dev-workflow:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only:
+                - dev
+                - /^feat\/.*/
+                - /^fix\/.*/
+                - /^chore\/.*/
+                - /^docs\/.*/
+      - build:
+          filters:
+            branches:
+              only:
+                - dev
+                - /^feat\/.*/
+                - /^fix\/.*/
+                - /^chore\/.*/
+                - /^docs\/.*/
+          requires:
+            - test
+
+  # Main branch workflow - runs tests, builds, and publishes to npm
+  main-workflow:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: main
+      - build:
+          filters:
+            branches:
+              only: main
+          requires:
+            - test
+      - npm-publish:
+          filters:
+            branches:
+              only: main
+          requires:
+            - test
+            - build 
