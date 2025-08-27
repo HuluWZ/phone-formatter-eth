@@ -1,6 +1,6 @@
 {
   "name": "phone-formater-eth",
-  "version": "1.1.8",
+  "version": "2.0.0",
   "description": "Format Ethiopian phone numbers and check ISP under the number.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -43,6 +43,9 @@
     "operator",
     "safaricom",
     "ethio-telecom",
-    "phone number"
+    "phone number",
+    "validation",
+    "error handling",
+    "typescript"
   ]
 }
