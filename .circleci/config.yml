@@ -22,10 +22,9 @@ commands:
           keys:
             - v2-deps-{{ checksum "package-lock.json" }}
             - v2-deps-
-      - node/install-packages:
-          pkg-manager: npm
-          cache-path: node_modules
-          cache-key: v2-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci
       - save_cache:
           key: v2-deps-{{ checksum "package-lock.json" }}
           paths:
