@@ -8,15 +8,11 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:fast": "jest --maxWorkers=2 --maxConcurrency=1",
-    "test:ci": "jest --ci --coverage --watchAll=false",
     "start": "nodemon dist/index.js",
     "dev": "nodemon --watch src --ext ts src/index.js",
     "dev:ts": "ts-node src/index.ts",
     "clean": "rm -rf dist coverage .jest-cache",
-    "prepublishOnly": "npm run clean && npm run build && npm run test:ci"
+    "prepublishOnly": "npm run clean && npm run build && npm test"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",

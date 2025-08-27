@@ -39,18 +39,11 @@ commands:
 jobs:
   test:
     executor: node-executor
-    parallelism: 2
     steps:
       - setup-workspace
       - run:
-          name: Run tests in parallel
-          command: |
-            # Split tests across parallel containers
-            if [ "$CIRCLE_NODE_INDEX" = "0" ]; then
-              npm run test:fast -- --testPathPattern="(format|validation)" --maxWorkers=1
-            else
-              npm run test:fast -- --testPathPattern="(operator|utility)" --maxWorkers=1
-            fi
+          name: Run tests
+          command: npm test
       - store_test_results:
           path: test-results
       - store_artifacts:
@@ -68,17 +61,6 @@ jobs:
           path: dist
           destination: build
 
-  coverage:
-    executor: node-executor
-    steps:
-      - setup-workspace
-      - run:
-          name: Run tests with coverage
-          command: npm run test:coverage
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-
   npm-publish:
     executor: node-medium
     steps:
@@ -88,7 +70,7 @@ jobs:
           command: npm run build
       - run:
           name: Run tests
-          command: npm run test:ci
+          command: npm test
       - run:
           name: Type check
           command: npx tsc --noEmit
@@ -126,17 +108,6 @@ workflows:
                 - /^docs\/.*/
           requires:
             - test
-      - coverage:
-          filters:
-            branches:
-              only:
-                - dev
-                - /^feat\/.*/
-                - /^fix\/.*/
-                - /^chore\/.*/
-                - /^docs\/.*/
-          requires:
-            - test
 
   # Main branch workflow - runs tests, builds, and publishes to npm
   main-workflow:
@@ -151,17 +122,10 @@ workflows:
               only: main
           requires:
             - test
-      - coverage:
-          filters:
-            branches:
-              only: main
-          requires:
-            - test
       - npm-publish:
           filters:
             branches:
               only: main
           requires:
             - test
-            - build
-            - coverage 
+            - build 

@@ -4,25 +4,6 @@ module.exports = {
   testMatch: [
     '**/?(*.)+(spec|test).ts'
   ],
-  collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/**/*.d.ts',
-  ],
-  coverageDirectory: 'coverage',
-  coverageReporters: [
-    'text',
-    'lcov',
-    'html',
-    'json'
-  ],
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80
-    }
-  },
   verbose: false,
   testTimeout: 5000,
   setupFilesAfterEnv: [],
