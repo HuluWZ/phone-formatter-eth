@@ -115,22 +115,20 @@ function formatPhone(phone, type = "international") {
         throw new InvalidLengthError(`Phone number length must be between 9 and 13 digits, got ${phone_length}`, phone, phone_length);
     }
     // Handle different formats
-    if (phone_length === 13 && formatted_phone.startsWith("+251")) {
+    if (/^\+251\d{9}$/.test(formatted_phone)) {
         return type === "local" ? formatLocal(formatted_phone) : formatted_phone;
     }
-    else if (phone_length === 12 && formatted_phone.startsWith("251")) {
+    else if (/^251\d{9}$/.test(formatted_phone)) {
         return type === "local"
             ? formatLocal(`+${formatted_phone}`)
             : `+${formatted_phone}`;
     }
-    else if (phone_length === 10 &&
-        ["09", "07"].includes(formatted_phone.slice(0, 2))) {
+    else if (/^0[79]\d{8}$/.test(formatted_phone)) {
         return type === "local"
             ? formatted_phone
             : `+251${formatted_phone.slice(1)}`;
     }
-    else if (phone_length === 9 &&
-        ["9", "7"].includes(formatted_phone.charAt(0))) {
+    else if (/^[79]\d{8}$/.test(formatted_phone)) {
         return type === "local"
             ? `0${formatted_phone}`
             : `+251${formatted_phone}`;
@@ -149,10 +147,10 @@ function formatLocal(phone) {
     if (!phone || typeof phone !== 'string') {
         throw new InvalidFormatError("Phone number must be a non-empty string", phone);
     }
-    if (phone.startsWith("+251")) {
+    if (phone.length === 13 && /^\+251\d{9}$/.test(phone)) {
         return `0${phone.slice(4)}`;
     }
-    throw new InvalidFormatError(`Phone number must start with +251, got: ${phone}`, phone);
+    throw new InvalidFormatError(`Phone number must use +251 followed by 9 digits, got: ${phone}`, phone);
 }
 /**
  * Checks if the phone number is a mobile number
