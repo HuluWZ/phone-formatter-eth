@@ -113,23 +113,17 @@ export function formatPhone(
   }
 
   // Handle different formats
-  if (phone_length === 13 && formatted_phone.startsWith("+251")) {
+  if (/^\+251\d{9}$/.test(formatted_phone)) {
     return type === "local" ? formatLocal(formatted_phone) : formatted_phone;
-  } else if (phone_length === 12 && formatted_phone.startsWith("251")) {
+  } else if (/^251\d{9}$/.test(formatted_phone)) {
     return type === "local"
       ? formatLocal(`+${formatted_phone}`)
       : `+${formatted_phone}`;
-  } else if (
-    phone_length === 10 &&
-    ["09", "07"].includes(formatted_phone.slice(0, 2))
-  ) {
+  } else if (/^0[79]\d{8}$/.test(formatted_phone)) {
     return type === "local"
       ? formatted_phone
       : `+251${formatted_phone.slice(1)}`;
-  } else if (
-    phone_length === 9 &&
-    ["9", "7"].includes(formatted_phone.charAt(0))
-  ) {
+  } else if (/^[79]\d{8}$/.test(formatted_phone)) {
     return type === "local"
       ? `0${formatted_phone}`
       : `+251${formatted_phone}`;

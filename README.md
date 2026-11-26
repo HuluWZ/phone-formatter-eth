@@ -360,6 +360,8 @@ The library automatically handles:
 - Parentheses: `"(09)123-456-78"` → `"0912345678"`
 - Plus signs: `"+251-91-234-5678"` → `"+251912345678"`
 
+The `+` sign is accepted only as a single leading country-code marker. Embedded or repeated plus signs throw `InvalidFormatError`.
+
 ## 🔄 Migration from v1.x
 
 ### Breaking Changes
