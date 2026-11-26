@@ -104,9 +104,9 @@ formatPhone("+251912345678", "local"); // "0912345678"
 Converts international format to local format.
 
 **Parameters:**
-- `phone`: Phone number in international format (+251...)
+- `phone`: Canonical international format: `+251` followed by exactly 9 digits. Use `formatPhone` first for inputs containing spaces, dashes, or parentheses.
 
-**Returns:** Phone number in local format (09... or 07...)
+**Returns:** Phone number with `+251` replaced by a leading `0`.
 
 **Throws:** `InvalidFormatError`
 

@@ -147,10 +147,10 @@ function formatLocal(phone) {
     if (!phone || typeof phone !== 'string') {
         throw new InvalidFormatError("Phone number must be a non-empty string", phone);
     }
-    if (phone.startsWith("+251")) {
+    if (phone.length === 13 && /^\+251\d{9}$/.test(phone)) {
         return `0${phone.slice(4)}`;
     }
-    throw new InvalidFormatError(`Phone number must start with +251, got: ${phone}`, phone);
+    throw new InvalidFormatError(`Phone number must use +251 followed by 9 digits, got: ${phone}`, phone);
 }
 /**
  * Checks if the phone number is a mobile number
